@@ -1,0 +1,164 @@
+﻿
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@*@using (Html.BeginForm("BuscaSuscriptor", "Suscriptor", FormMethod.Post))
+{*@
+@*<form id="frmBusca" name="frmBusca" enctype="multipart/form-data">*@
+
+<form id="fmrData" name="fmrData">
+    <div class="col-12">
+        <div class="alert alert-success" role="alert">
+            <div class="card">
+                <div class="card-header">
+                    <i class="fas fa-table me-1"></i>
+                    Buscar suscriptor
+                </div>
+                <div class="card-body">
+                   <div >
+                        <div class="row">
+                            <div class="col-4">
+                                <fieldset>
+                                    Tipo Documento
+                                    <select id="TipoDocumento" name="TipoDocumento" class="form-control">
+                                        <option value="0">DNI</option>
+                                        <option value="1">INE</option>
+                                        <option value="2">Cedula</option>
+                                        <option value="3">Pasaporte</option>
+                                        <option value="4">Acta Nacimiento</option>
+                                        <option value="5">Licencia de Conducir</option>
+                                    </select>
+                                </fieldset>
+
+                            </div>
+                            <div class="col-4">
+                                <fieldset>
+                                    Numero Documento
+                                    <input type="text" id="NumeroDocumento" name="NumeroDocumento" class="form-control" />
+                                </fieldset>
+
+                            </div>
+                            <div class="col-4">
+                                <button type="button" class="btn btn-success" style="width:120px"  onclick="fnBuscaSuscriptor()">
+                                    <div class="sb-nav-link-icon"><i class="fa-solid fa-plus"></i> Buscar</div>
+                                </button>
+                            </div>
+                        </div>
+                   </div>
+                </div>
+            </div>
+        </div>
+    </div>
+@*</form>*@
+@*}*@
+
+<div class="col-12">
+    <div class="alert alert-success" role="alert">
+        <div class="card">
+            <div class="card-header">
+                <i class="fas fa-table me-1"></i>
+                Datos del suscriptor
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-4">
+                            <input type="hidden" name="IdSuscriptor" id="IdSuscriptor" />
+                        <fieldset>
+                            Nombre
+                            <input type="text" id="Nombre" name="Nombre" class="form-control" />
+                            
+                        </fieldset>
+                    </div>
+                    <div class="col-4">
+                        <fieldset>
+                            Apellido
+                            <input type="text" id="Apellido" name="Apellido" class="form-control" />
+                        </fieldset>
+                    </div>
+                    <div class="col-4">
+                            <button type="button" class="btn btn-info" style="width:120px" onclick="fnNuevo()">
+                            <div class="sb-nav-link-icon"><i class="fa-solid fa-plus"></i> Nuevo</div>
+                        </button>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-4">
+                        <fieldset>
+                            Direccion
+                            <input type="text" id="Direccion" name="Direccion" class="form-control" />
+                        </fieldset>
+                    </div>
+                    <div class="col-4">
+                        <fieldset>
+                            Email
+                                <input type="text" id="Email" name="Email" class="form-control"  />
+                        </fieldset>
+                    </div>
+                    <div class="col-4">
+                        <button type="button" class="btn btn-warning" style="width:120px" onclick="fnEditarSuscriptor()" >
+                            <div class="sb-nav-link-icon"><i class="fa-solid fa-plus"></i> Modificar</div>
+                        </button>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-4">
+                        <fieldset>
+                            Telefono
+                            <input type="text" id="Telefono" name="Telefono" class="form-control" />
+                        </fieldset>
+                    </div>
+                    <div class="col-4">
+                        <fieldset>
+                            Estado
+                                <select id="Estado" name="Estado" readonly onmousedown="return false;" class="form-control">
+                                    <option value="0">Pendiente</option>
+                                    <option value="1">Suscrito</option>
+                                </select>
+                        </fieldset>
+                    </div>
+                    <div class="col-4">
+                        <button type="button" class="btn btn-success" style="width:120px" onclick="fnGuardaSuscriptor()">
+                            <div class="sb-nav-link-icon"><i class="fa-solid fa-plus"></i> Guardar</div>
+                        </button>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-4">
+                        <fieldset>
+                            Nombre de Usuario
+                            <input type="text" id="Username" name="Username" class="form-control" />
+                        </fieldset>
+                    </div>
+                    <div class="col-4">
+                        <fieldset>
+                            Contraseña
+                            <input type="text" id="Pwd" name="Pwd" class="form-control" />
+                        </fieldset>
+                    </div>
+                    <div class="col-4">
+                            <button type="button" class="btn btn-danger" style="width:120px" onclick="fnNuevo()">
+                            <div class="sb-nav-link-icon"><i class="fa-solid fa-plus"></i> Cancelar</div>
+                        </button>
+                    </div>
+                </div>
+                <br/>
+                    <div class="row">
+                        <div class="col-12 align-content-lg-start">                            
+                            <button type="button" name="btnRegister" id="btnRegister" class="btn btn-success" style="width:250px; display:none" onclick="fnGuardaSuscripcion() ">
+                                <div class="sb-nav-link-icon"><i class="fa-solid fa-plus"></i> Registrar Suscripcion</div>
+                            </button>
+                        </div>
+                    </div>
+            </div>
+        </div>
+    </div>
+</div>
+</form>
+<br />
+<div id="msg"></div>
+
+<!--Scripts-->
+<script src="~/js/suscriptor.js"></script>
