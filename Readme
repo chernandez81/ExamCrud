@@ -1,0 +1,12 @@
+Aplicacion realizada en Visual Studio 2022
+Usa una base de datos en SQL Server version 2019
+Se usaron validaciones de JavaScript Puro
+Llamado a funciones de Javascripts y serializando la información para comunicarse con los Controladores
+Arquitectura Hexagonal
+Patron de diseño Repository
+Aplicación en MVC
+Solo se requiere cambiar la cadena de copnexión.
+Descripcion
+
+Cuando se genera un suscriptor manda mensaje al final del formulario indicando el estatus de la transaccion (Exito o Fallo). 
+Al buscar un Suscriptor si no tiene una suscripcion se habilita el boton de de Guardar Suscripcion y se deshabilita el campo username.
